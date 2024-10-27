@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Model</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .bmi { color: blue; }
+        .smoking { color: red; }
+        .alcohol { color: green; }
+        .stroke { color: orange; }
+        .physical-health { color: purple; }
+        .mental-health { color: pink; }
+        .difficulty-walking { color: brown; }
+        .age-category { color: teal; }
+        .diabetic { color: navy; }
+        .physical-activity { color: magenta; }
+        .sleep-time { color: darkgreen; }
+        .general-health { color: darkblue; }
+
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center; /* Align items to the left */
+            margin: 20px; /* Space around the container */
+            /* flex-direction: column; */
+        }
+
+        .form-container {
+            width: 50%; /* Set width for the form */
+            margin-right: 20px; /* Space between form and output */
+        }
+
+        .output-container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            padding: 15px; /* Padding inside the box */
+            text-align: center; /* Center text inside the box */
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+       <h1 style="text-align: center; width: 100%;" >Heart Disease Prediction Model</h1>
+    <div class="container">
+        <div class="form-container">
+            <form id="prediction-form">
+                <label class="bmi">BMI: </label><input type="text" name="bmi" required><br>
+                <label class="smoking">Smoking:</label>
+                <input type="text" name="smoking" placeholder="Yes=1, No=0" required><br>
+                <label class="alcohol">Alcohol Drinking:</label>
+                <input type="text" name="alcohol_drinking" placeholder="Yes=1, No=0" required><br>
+                <label class="stroke">Stroke:</label>
+                <input type="text" name="stroke" placeholder="Yes=1, No=0" required><br>
+                <label class="physical-health">Physical Health (days of poor health): </label>
+                <input type="text" name="physical_health" required><br>
+                <label class="mental-health">Mental Health (days of poor health): </label>
+                <input type="text" name="mental_health" required><br>
+                <label class="difficulty-walking">Difficulty Walking:</label>
+                <input type="text" name="diff_walking" placeholder="Yes=1, No=0" required><br>
+                <label class="age-category">Age Category: </label>
+                <input type="text" name="age_category" required><br>
+                <label class="diabetic">Diabetic:</label>
+                <input type="text" name="diabetic" placeholder="Yes=1, No=0" required><br>
+                <label class="physical-activity">Physical Activity:</label>
+                <input type="text" name="physical_activity" placeholder="Yes=1, No=0" required><br>
+                <label class="sleep-time">Sleep Time (hours): </label>
+                <input type="text" name="sleep_time" required><br>
+                <label class="general-health">General Health (0-4): </label>
+                <input type="text" name="gen_health" required><br>
+                <input type="submit" value="PREDICT">
+            </form>
+        </div>
+
+        <!-- Display prediction result -->
+        <div class="output-container" id="output-container">
+            <h2>Prediction Result:</h2>
+            <p id="prediction-result">{{ prediction }}</p>
+        </div>
+    </div>
+    <footer>
+        <a target="_blank" href="https://facebook/nayan.islam.bd/">@sajib saha</a>
+    </footer>
+   </div>
+
+    <!-- Footer -->
+   
+
+    <script>
+        document.getElementById('prediction-form').onsubmit = function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Simulate a prediction result based on form input
+            const prediction = `Predicted Risk: ${Math.random() < 0.5 ? '0 => No' : '1 => Yes'}`; // Example prediction logic
+            
+            // Update the output container
+            document.getElementById('prediction-result').textContent = prediction;
+            document.getElementById('output-container').style.display = 'block'; // Show the output container
+        };
+    </script>
+</body>
+</html>
